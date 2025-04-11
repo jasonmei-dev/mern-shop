@@ -1,10 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import connectDB from './config/db.js';
 import products from './data/products.js';
 
 dotenv.config();
 const port = process.env.PORT || 5500;
-
 const app = express();
 
 app.get('/', (req, res) => {
@@ -20,4 +20,7 @@ app.get('/api/products/:id', (req, res) => {
   res.json(product);
 });
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => {
+  connectDB();
+  console.log(`Server running on port ${port}`);
+});

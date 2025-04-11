@@ -14,7 +14,8 @@
   "license": "MIT",
   "description": "eCommerce application built with MERN stack",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
