@@ -1,18 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Row, Col, ListGroup, Image, Form, Button, Card, ListGroupItem } from 'react-bootstrap';
 import { FaTrash } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../slices/cartSlice';
+import { addToCart, removeFromCart } from '../slices/cartSlice';
 import Message from '../components/Message';
 
 const CartPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems, itemsPrice } = cart;
 
   const addToCartHandler = async (product, qty) => {
     dispatch(addToCart({ ...product, qty }));
+  };
+
+  const removeFromCartHandler = async (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const checkoutHandler = () => {
+    navigate('/login?redirect=/shipping');
   };
 
   return (
@@ -45,7 +54,7 @@ const CartPage = () => {
                     </Form.Control>
                   </Col>
                   <Col md={2}>
-                    <Button type="button" variant="light">
+                    <Button type="button" variant="light" onClick={() => removeFromCartHandler(item._id)}>
                       <FaTrash />
                     </Button>
                   </Col>
@@ -63,7 +72,7 @@ const CartPage = () => {
               {itemsPrice}
             </ListGroup.Item>
             <ListGroupItem>
-              <Button type="button" className="btn-block" disabled={cartItems.length === 0}>
+              <Button type="button" className="btn-block" disabled={cartItems.length === 0} onClick={checkoutHandler}>
                 Proceed To Checkout
               </Button>
             </ListGroupItem>
