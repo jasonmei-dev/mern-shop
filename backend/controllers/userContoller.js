@@ -8,6 +8,11 @@ import generateToken from '../utils/generateToken.js';
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    res.status(400);
+    throw new Error('All fields required');
+  }
+
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
