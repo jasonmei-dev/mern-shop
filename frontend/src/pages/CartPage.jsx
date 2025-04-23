@@ -43,7 +43,7 @@ const CartPage = () => {
                   <Col md={3}>
                     <Link to={`/products/${item._id}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>{item.price}</Col>
+                  <Col md={2}>${item.price}</Col>
                   <Col md={2}>
                     <Form.Control as="select" value={item.qty} onChange={(e) => addToCartHandler(item, Number(e.target.value))}>
                       {[...Array(item.countInStock).keys()].map((x) => (
@@ -68,8 +68,7 @@ const CartPage = () => {
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
-              {itemsPrice}
+              <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>${itemsPrice}
             </ListGroup.Item>
             <ListGroupItem>
               <Button type="button" className="btn-block" disabled={cartItems.length === 0} onClick={checkoutHandler}>
