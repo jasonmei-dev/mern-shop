@@ -6,6 +6,7 @@ import store from './store.js';
 import './styles/bootstrap.custom.css';
 import './styles/index.css';
 import App from './App.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 import HomePage from './pages/HomePage.jsx';
 import ProductPage from './pages/ProductPage.jsx';
 import CartPage from './pages/CartPage.jsx';
@@ -21,7 +22,10 @@ const router = createBrowserRouter(
       <Route path="/cart" element={<CartPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/shipping" element={<ShippingPage />} />
+      {/* Private Routes */}
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/shipping" element={<ShippingPage />} />
+      </Route>
     </Route>
   )
 );
