@@ -65,7 +65,7 @@ const ProfilePage = () => {
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control type="password" placeholder="Confirm new password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
           </Form.Group>
-          <Button type="submit" variant="primary" className="mt-2" onSubmit={submitHandler}>
+          <Button type="submit" variant="primary" className="my-2" onSubmit={submitHandler}>
             Update Info
           </Button>
           {loadingProfileUpdate && <Loader />}
@@ -78,7 +78,7 @@ const ProfilePage = () => {
         ) : error ? (
           <Message variant="danger">{error?.data?.message || error.error}</Message>
         ) : (
-          <Table striped hover responsive className="table-sm">
+          <Table striped hover responsive size="sm" style={{ whiteSpace: 'nowrap' }}>
             <thead>
               <tr>
                 <th>ID</th>
