@@ -64,7 +64,7 @@ const ProductListPage = () => {
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
-                    <Button as={Link} to={`/admin/product/${product._id}/edit`} variant="light" className="btn-sm mx-2">
+                    <Button as={Link} to={`/admin/products/${product._id}/edit`} variant="light" className="btn-sm mx-2">
                       <FaEdit />
                     </Button>
                     <Button onClick={() => deleteProductHandler(product._id)} variant="danger" className="btn-sm mx-2">
