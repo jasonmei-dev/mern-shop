@@ -34,7 +34,7 @@ const ShippingPage = () => {
           <Form.Control type="text" placeholder="Enter address" value={address} onChange={(e) => setAddress(e.target.value)}></Form.Control>
         </Form.Group>
         <Form.Group controlId="city" className="my-2">
-          <Form.Label>City</Form.Label>
+          <Form.Label>City, State</Form.Label>
           <Form.Control type="text" placeholder="Enter city" value={city} onChange={(e) => setCity(e.target.value)}></Form.Control>
         </Form.Group>
         <Form.Group controlId="postalCode" className="my-2">
