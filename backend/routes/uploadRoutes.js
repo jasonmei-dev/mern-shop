@@ -17,15 +17,17 @@ const checkFileType = (file, callback) => {
   const filetypes = /jpg|jpeg|png/;
   const extname = filetypes.test(path.extname(file.originalname)).toLowerCase();
   const mimetype = filetypes.test(file.mimtype);
+
   if (extname && mimetype) {
     return callback(null, true);
   } else {
-    callback('Images only!');
+    callback('Images only!', false);
   }
 };
 
 const upload = multer({
   storage,
+  checkFileType,
 });
 
 router.post('/', upload.single('image'), (req, res) => {

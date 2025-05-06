@@ -5,12 +5,13 @@ import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import FormContainer from '../../components/FormContainer';
 import { toast } from 'react-toastify';
-import { useUpdateProductMutation, useGetProductDetailsQuery } from '../../slices/productsApiSlice';
+import { useUpdateProductMutation, useGetProductDetailsQuery, useUploadProductImageMutation } from '../../slices/productsApiSlice';
 
-const EditProductPage = () => {
+const ProductEditPage = () => {
   const { id: productId } = useParams();
   const { data: product, isLoading, error, refetch } = useGetProductDetailsQuery(productId);
   const [updateProduct, { isLoading: updateProductLoading }] = useUpdateProductMutation();
+  const [uploadProductImage, { isLoading: uploadLoading }] = useUploadProductImageMutation();
 
   const navigate = useNavigate();
 
@@ -57,6 +58,18 @@ const EditProductPage = () => {
     }
   };
 
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImage(res.image);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
   return (
     <>
       <Link to="/admin/productlist" className="btn btn-light my-3">
@@ -79,7 +92,14 @@ const EditProductPage = () => {
               <Form.Label>Price</Form.Label>
               <Form.Control type="number" placeholder="Enter price" value={price} onChange={(e) => setPrice(e.target.value)}></Form.Control>
             </Form.Group>
-            {/* IMAGE INPUT PLACEHOLDER */}
+            <Form.Group>
+              <Form.Group controlId="image" className="my-2">
+                <Form.Label>Image</Form.Label>
+                <Form.Control type="text" placeholder="Enter image URL" value={image} onChange={(e) => setImage(e.target.value)}></Form.Control>
+                <Form.Control type="file" label="Choose File" onChange={uploadFileHandler}></Form.Control>
+                {uploadLoading && <Loader />}
+              </Form.Group>
+            </Form.Group>
             <Form.Group controlId="brand" className="my-2">
               <Form.Label>Brand</Form.Label>
               <Form.Control type="text" placeholder="Enter brand" value={brand} onChange={(e) => setBrand(e.target.value)}></Form.Control>
@@ -106,4 +126,4 @@ const EditProductPage = () => {
   );
 };
 
-export default EditProductPage;
+export default ProductEditPage;
