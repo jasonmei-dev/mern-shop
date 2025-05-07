@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Table, Button, Row, Col } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import { FaEdit, FaTrash, FaTimes, FaCheck } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
