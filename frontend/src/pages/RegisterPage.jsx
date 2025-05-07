@@ -55,7 +55,7 @@ const RegisterPage = () => {
         </Form.Group>
         <Form.Group controlId="email" className="my-3">
           <Form.Label>Email Address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
+          <Form.Control type="text" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
         </Form.Group>
         <Form.Group controlId="password" className="my-3">
           <Form.Label>Password</Form.Label>
