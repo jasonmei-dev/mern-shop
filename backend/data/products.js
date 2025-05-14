@@ -54,7 +54,7 @@ const products = [
       'A Growing Storm of Stellar Strength! Terawatts of electricity crash down from the sky in a tropical paradise, setting the stage for the supercharged Pikachu ex! With the power of a Stellar Tera Pokémon ex, it lights up the shoreline, revealing a parade of dragon Pokémon led by the towering Alolan Exeggutor ex! Archaludon ex and Latias ex round out the horde, while new ACE SPEC cards and more new Pokémon ex bring surprises of their own. Currents crackle and Dragon types roar in the Pokémon TCG: Scarlet & Violet—Surging Sparks expansion! Includes 36 Pokémon TCG: Scarlet & Violet—Surging Sparks booster packs. Each booster pack contains 10 cards and 1 Basic Energy. Cards vary by pack.',
     brand: 'Pokémon',
     category: 'Trading Cards',
-    price: 249.99,
+    price: 229.99,
     countInStock: 7,
     rating: 4.5,
     numReviews: 10,
