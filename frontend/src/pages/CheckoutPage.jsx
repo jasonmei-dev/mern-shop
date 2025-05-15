@@ -118,7 +118,7 @@ const CheckoutPage = () => {
                   <Col>${totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {error && <ListGroup.Item>{error && <Message variant="danger">{error.data.message}</Message>}</ListGroup.Item>}
+              {error && <ListGroup.Item>{error && <Message variant="danger">{error?.data?.message || error.error}</Message>}</ListGroup.Item>}
               <ListGroup.Item>
                 <Button type="button" className="btn-block" disabled={cartItems.length === 0} onClick={placeOrderHandler}>
                   Place Order
